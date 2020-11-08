@@ -1,0 +1,76 @@
+1) B) Web scraping
+
+2) C) Requests
+
+3) A) Browser based applications
+
+4) B) Crawler
+
+5) B) tag.name
+
+6) A) html.parser	
+
+7) C) execute tests on HtmlUnit browser
+
+8) C) the list of all webelements associated with the ‘given xpath’
+
+9) C) ‘a’ number of pixels horizontally
+
+10) A, B, C D
+
+11) Web crawlers usually focus on indexing the web while web scrapers extract or "scrape" data from webpages.
+
+12) A robots. txt file tells search engine crawlers which pages or files the crawler can or can't request from your site. A search engine bot (like Googlebot) will read the robots. txt file prior to crawling your site to learn what pages it should deal with.
+
+13) In static web pages, Pages will remain same until someone changes it manually. In dynamic web pages, Content of pages are different for different visitors.
+
+14) 
+
+from urllib.request import urlopen
+from urllib.error import HTTPError
+from bs4 import BeautifulSoup
+def getTitle(url):
+    try:
+        html = urlopen(url)
+    except HTTPError as e:
+        return None
+    try:
+        bsObj = BeautifulSoup(html.read(), "lxml")
+        title = bsObj.body.h1
+    except AttributeError as e:
+        return None
+    return title
+    
+    title = getTitle(url)
+    if title == None:
+      return "Title could not be found"
+    else:
+      return title
+
+print(getTitle("https://www.facebook.com/"))
+
+print(getTitle("https://in.yahoo.com/?p=us"))
+
+15)
+
+#importing required libraries
+import selenium
+from selenium import webdriver
+
+
+driver = webdriver.Chrome(r'C:/Users/User/Desktop/FlipRobo Internship')
+
+
+driver.get('https://images.google.com/')
+
+search_bar = driver.find_element_by_xpath('//*[@id="sbtc"]/div/div[2]/input')
+
+search_bar.send_keys("banana")  
+ 
+search_button = driver.find_element_by_xpath('//*[@id="sbtc"]/button') 
+
+search_button.click()  
+
+driver.close()
+
+	
